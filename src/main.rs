@@ -49,7 +49,7 @@ async fn main() {
         .route("/ws", any(ws_handler))
         .with_state(broadcast::channel::<String>(16).0);
 
-    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
+    let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
     tracing::debug!("listening on {}", addr);
 
     let mut server = axum_server::bind_rustls(addr, config);
